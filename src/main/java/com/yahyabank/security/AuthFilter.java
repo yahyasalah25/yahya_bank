@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
@@ -28,6 +29,11 @@ public class AuthFilter extends OncePerRequestFilter {
     private final TokenService tokenService;
     private final CustomUserDetailsService customUserDetailsService;
     private final CustomAuthenticationEntryPoint customAuthenticationEntryPoint;
+
+
+    //===============================================================================================================================================
+
+
     String email;
     @Override
     protected void doFilterInternal(HttpServletRequest request,
@@ -39,19 +45,18 @@ public class AuthFilter extends OncePerRequestFilter {
 
         if (token != null) {
 
-
-
             try {
-
 
                 email = tokenService.getUserFromToken(token);
 
             } catch (Exception e) {
+
                 log.error("Exception occurred while extracting username from token");
 
                 AuthenticationException authenticationException = new BadCredentialsException(e.getMessage());
 
                 customAuthenticationEntryPoint.commence(request, response, authenticationException);
+
                 return;
             }
 
@@ -80,11 +85,20 @@ public class AuthFilter extends OncePerRequestFilter {
         }
     }
 
+
+    //===============================================================================================================================================
+
+
     private String getTokenFromRequest(HttpServletRequest request) {
-        String tokenWithBearer = request.getHeader("Authorization");
+        String tokenWithBearer = request.getHeader(HttpHeaders.AUTHORIZATION);
         if (tokenWithBearer != null && tokenWithBearer.startsWith("Bearer ")) {
             return tokenWithBearer.substring(7);
         }
         return null;
     }
+
+
+    //===============================================================================================================================================
+
+
 }

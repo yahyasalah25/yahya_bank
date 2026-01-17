@@ -31,10 +31,10 @@ public class Account {
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String AccountNumber;
+    private String accountNumber;
 
     @Column(nullable = false, precision = 19, scale = 2)
-    private BigDecimal Balance = BigDecimal.ZERO;
+    private BigDecimal balance = BigDecimal.ZERO;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

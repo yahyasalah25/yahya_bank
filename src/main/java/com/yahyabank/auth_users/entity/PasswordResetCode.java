@@ -23,9 +23,10 @@ public class PasswordResetCode {
     @Column(unique = true)
     private String code;
 
-    @OneToOne(targetEntity =User.class, fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false,name = "user_id")
-    private User User;
+    @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
+
+    @JoinColumn( nullable = false , name = "user_id")
+    private User user;
 
 
     private LocalDateTime expiryDate;

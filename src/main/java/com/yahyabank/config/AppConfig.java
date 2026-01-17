@@ -8,6 +8,8 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
+import java.nio.charset.StandardCharsets;
+
 @Configuration
 public class AppConfig {
 
@@ -27,8 +29,9 @@ public class AppConfig {
         ClassLoaderTemplateResolver templateResolver = new ClassLoaderTemplateResolver();
         templateResolver.setSuffix(".html");
         templateResolver.setTemplateMode(TemplateMode.HTML);
-        templateResolver.setCharacterEncoding("UTF-8");
-        templateResolver.setPrefix("templates/");
+        templateResolver.setCharacterEncoding(StandardCharsets.UTF_8.name());
+        templateResolver.setPrefix("mail-templates/");
+
 
         templateEngine.setTemplateResolver(templateResolver);
         return templateEngine;

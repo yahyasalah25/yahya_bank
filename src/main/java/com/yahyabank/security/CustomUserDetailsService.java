@@ -14,7 +14,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 @Slf4j
 public class CustomUserDetailsService implements UserDetailsService {
+
+    //===============================================================================================================================================
+
     private final UserRepo userRepo;
+
+
+    //===============================================================================================================================================
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
@@ -33,4 +39,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 
     }
+
+
+    //===============================================================================================================================================
+
+
 }

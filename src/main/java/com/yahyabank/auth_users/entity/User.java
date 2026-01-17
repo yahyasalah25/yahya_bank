@@ -5,10 +5,12 @@ import com.yahyabank.role.entity.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,6 +22,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class User {
+
+
+    //===============================================================================================================================================
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,13 +38,12 @@ public class User {
     @Column(unique = true, nullable = false)
     @NotBlank(message = "Email is required")
     private String email;
-
+//    @Pattern(regexp = "^[+]{1}(?:[0-9\\-\\\\.]\\s?){6,15}[0-9]{1}$")
     private String phoneNumber;
 
     private String password;
 
     private boolean emailVerified;
-
 
 
     private String profilePictureUrl;
@@ -56,9 +60,12 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Account> accounts;
 
-
-    private LocalDateTime createdAt= LocalDateTime.now();
+    @CreationTimestamp
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     private LocalDateTime updatedAt;
+
+
+    //===============================================================================================================================================
 
 }

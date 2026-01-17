@@ -1,0 +1,18 @@
+${AnsiColor.GREEN}
+▀▄    ▄ █▀▀█ █   █ ▀▄    ▄ █▀▀█
+  █  █  █  █ █   █   █  █  █  █
+   ▀█   █▄▄█ █▀▀▀█    ▀█   █▄▄█
+    █   █  █ █   █     █   █  █
+   ▄▀                 ▄▀
+
+
+
+
+
+
+SALAH
+
+
+         Application: ${spring.application.name}
+         Version: ${spring-boot.version}
+         ${AnsiColor.DEFAULT}

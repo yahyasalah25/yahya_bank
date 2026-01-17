@@ -21,4 +21,10 @@ public class Role {
     @NotBlank(message = "Role Name is required")
     @Column(unique = true)
     private String name;
+
+
+
+    public Role(String roleName) {
+        this.name = roleName;
+    }
 }

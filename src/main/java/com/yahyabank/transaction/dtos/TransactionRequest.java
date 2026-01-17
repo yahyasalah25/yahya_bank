@@ -15,7 +15,7 @@ public class TransactionRequest {
     private BigDecimal amount;
     private String accountNumber;
     private String description;
-    private String destinationAccountNumber;
+    private String destinationAccountNumber; // The receiving account number if it transfers
 
 
 }

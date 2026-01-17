@@ -40,6 +40,7 @@ public class Transaction {
     @JoinColumn(name = "account_id",nullable = false)
     private Account account;
 
+    private String description;
     //for transfer
 
     private String sourceAccount;

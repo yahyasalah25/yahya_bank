@@ -1,4 +1,4 @@
-package com.yahyabank.res;
+package com.yahyabank.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;

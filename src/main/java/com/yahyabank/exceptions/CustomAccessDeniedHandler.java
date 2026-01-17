@@ -1,7 +1,7 @@
 package com.yahyabank.exceptions;
 
 
-import com.yahyabank.res.Response;
+import com.yahyabank.response.Response;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

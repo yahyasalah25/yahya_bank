@@ -16,7 +16,14 @@ import java.util.stream.Collectors;
 @Data
 @Builder
 public class AuthUser implements UserDetails {
+
+
+    //===============================================================================================================================================
+
     private User user;
+
+    //===============================================================================================================================================
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return user.getRoles()
@@ -25,18 +32,28 @@ public class AuthUser implements UserDetails {
                 .collect(Collectors.toList());
     }
 
+   //===============================================================================================================================================
+
+//    @Nullable
     @Override
-    public @Nullable String getPassword() {
+    public  String getPassword() {
         return user.getPassword();
     }
+
+   //===============================================================================================================================================
 
     @Override
     public String getUsername() {
         return user.getEmail();
     }
 
+   //===============================================================================================================================================
+
     @Override
     public boolean isEnabled() {
         return user.isActive();
     }
+
+    //===============================================================================================================================================
+
 }
